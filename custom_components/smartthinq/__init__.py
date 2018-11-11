@@ -16,7 +16,7 @@ import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
 
 
-REQUIREMENTS = ['wideq']
+""" REQUIREMENTS = ['wideq'] """
 
 DOMAIN = 'smartthinq'
 

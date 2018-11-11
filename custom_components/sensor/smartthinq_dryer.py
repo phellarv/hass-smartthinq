@@ -15,7 +15,7 @@ from homeassistant.const import (
 
 import wideq
 
-REQUIREMENTS = ['wideq']
+""" REQUIREMENTS = ['wideq'] """
 DEPENDENCIES = ['smartthinq']
 
 LGE_DRYER_DEVICES = 'lge_dryer_devices'

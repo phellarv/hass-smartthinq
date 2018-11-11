@@ -14,7 +14,7 @@ from homeassistant.const import (
 import time
 import wideq
 
-REQUIREMENTS = ['wideq']
+""" REQUIREMENTS = ['wideq'] """
 DEPENDENCIES = ['smartthinq']
 
 LGE_REF_DEVICES = 'lge_REF_devices'
