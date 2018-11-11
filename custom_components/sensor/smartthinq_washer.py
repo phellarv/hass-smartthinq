@@ -28,7 +28,7 @@ ATTR_PRE_STATE = 'pre_state'
 ATTR_REMAIN_TIME = 'remain_time'
 ATTR_INITIAL_TIME = 'initial_time'
 ATTR_RESERVE_TIME = 'reserve_time'
-ATTR_CURRENT_COURSE = 'cuarrent_course'
+ATTR_CURRENT_COURSE = 'current_course'
 ATTR_ERROR_STATE = 'error_state'
 ATTR_WASH_OPTION_STATE = 'wash_option_state'
 ATTR_SPIN_OPTION_STATE = 'spin_option_state'
@@ -157,24 +157,25 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     """Set up the LGE Washer components."""
 
-    LOGGER.debug("Creating new LGE Washer")
+    LOGGER.warning("Creating new LGE Washer")
 
     if LGE_WASHER_DEVICES not in hass.data:
         hass.data[LGE_WASHER_DEVICES] = []
-
+        LOGGER.warning("Getting data for washer")
     for device_id in (d for d in hass.data[LGE_DEVICES]):
         device = client.get_device(device_id)
-
+        LOGGER.warning("traversing data for washer")
         if device.type == wideq.DeviceType.WASHER:
             try:
             	washer_entity = LGEWASHERDEVICE(client, device)
             except wideq.NotConnectError:
-                LOGGER.info('Connection Lost. Retrying.')
+                LOGGER.warning("Connection Lost. Retrying.")
                 raise PlatformNotReady
             hass.data[LGE_WASHER_DEVICES].append(washer_entity)
+    LOGGER.warning("Adding entities")
     add_entities(hass.data[LGE_WASHER_DEVICES])
 
-    LOGGER.debug("LGE Washer is added")
+    LOGGER.warning("LGE Washer is added")
     
 class LGEWASHERDEVICE(LGEDevice):
     def __init__(self, client, device):
@@ -282,10 +283,10 @@ class LGEWASHERDEVICE(LGEDevice):
         if self._state:
             course = self._state.current_course
             smartcourse = self._state.current_smartcourse
-            if course == '다운로드코스':
+            if course == 'Smartcourse':
                 return smartcourse
             elif course == 'OFF':
-                return '꺼짐'
+                return 'Off'
             else:
                 return course
 
