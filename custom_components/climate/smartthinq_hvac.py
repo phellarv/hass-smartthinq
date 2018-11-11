@@ -1,3 +1,4 @@
+import sys
 sys.path.append("/config/custom_components/wideq")
 import logging
 import threading
