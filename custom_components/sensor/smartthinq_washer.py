@@ -1,3 +1,4 @@
+sys.path.append("/config/deps/lib/python3.6/site-packages/wideq")
 import logging
 import voluptuous as vol
 import json
@@ -26,7 +27,7 @@ ATTR_PRE_STATE = 'pre_state'
 ATTR_REMAIN_TIME = 'remain_time'
 ATTR_INITIAL_TIME = 'initial_time'
 ATTR_RESERVE_TIME = 'reserve_time'
-ATTR_CURRENT_COURSE = 'current_course'
+ATTR_CURRENT_COURSE = 'cuarrent_course'
 ATTR_ERROR_STATE = 'error_state'
 ATTR_WASH_OPTION_STATE = 'wash_option_state'
 ATTR_SPIN_OPTION_STATE = 'spin_option_state'
@@ -425,7 +426,7 @@ class LGEWASHERDEVICE(LGEDevice):
         # We tried several times but got no result. This might happen
         # when the monitoring request gets into a bad state, so we
         # restart the task.
-        LOGGER.warn('Status update failed.')
+        LOGGER.warning('Status update failed.')
 
         self._washer.monitor_start()
         self._washer.monitor_start()

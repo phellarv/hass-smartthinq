@@ -1,3 +1,4 @@
+sys.path.append("/config/deps/lib/python3.6/site-packages/wideq")
 import logging
 import threading
 import voluptuous as vol

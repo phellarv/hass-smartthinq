@@ -3,6 +3,7 @@ Support for LG Smartthinq device.
 This is made for korean only.
 If you want to apply other county devices, you should change the code little bit.
 """
+sys.path.append("/config/deps/lib/python3.6/site-packages/wideq")
 import logging
 import wideq
 
